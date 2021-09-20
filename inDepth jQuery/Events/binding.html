@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Binding and Unbinding Events Example</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  </head>
+  <style>
+      .highlighted {
+            background-color: Red;
+        }
+ </style>
+  <body>
+    <nav class="navbar has-background-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <h1 class="is-size-2 has-text-primary-light">Binding and Unbinding Events Example</h1>
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      </nav>
+        <div class="container mt-5">
+            <h1>Binding and Unbinding Events Example</h1>
+            <div id="content">
+                <p>jQuery makes it simple to start and stop listening to events using the <code>on()</code> and <code>off()</code> functions.
+                    You just need to supply the name of the event you want to listen to and a function to handle it</p>
+                <div id="evtTarget" class="box">Mouse over this div to see the effect. Click on it to unbind the mouseover.</div>
+                <p>Type in this text field</p>
+                <input id="textEntry" type="text" />
+                <p>Last character typed: <span id="keyPress"></span></p>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            $(function() {
+              $("#evtTarget").on("mouseover mouseleave", highlight);
+
+              $("#evtTarget").on("click", function(evt){
+                $("#evtTarget").off("mouseover mouseleave", highlight);
+                $("#evtTarget").html("<p>Hover effect shut off</p>");
+                $("#evtTarget").removeClass("highlighted");
+                
+                $("#textEntry").on("keypress", function(evt){
+                  $("#keyPress").text(String.fromCharCode(evt.charCode));
+                });
+              });
+            });
+            function highlight(){
+                $("#evtTarget").toggleClass("highlighted");
+              }
+        </script>
+  </body>
+</html>

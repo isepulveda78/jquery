@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Inserting Document Content</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  </head>
+  <body>
+    <nav class="navbar has-background-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <h1 class="is-size-2 has-text-primary-light">Inserting Document Content</h1>
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      </nav>
+        <div class="container mt-5">
+            <h1>Inserting Document Content</h1>
+            <div id="content">
+        
+                <p>Content can be inserted at various points in the document, relative to existing content, using a variety of jQuery
+                    methods built for each purpose.</p>
+                <p>There are two sets of insertion functions: one set for inserting content inside of other content, and one for inserting
+                    outside of other content.</p>
+                <ul id="list1">
+                    <li class="a"><code>append()</code>: Appends content to the inside of the matched elements</li>
+                    <li class="a"><code>prepend()</code>: Prepends content to the inside of the matched elements</li>
+                    <li class="a"><code>appendTo()</code>: Appends the specified content to the inside of the matched elements</li>
+                    <li class="a"><code>prependTo()</code>: Prepends the specified content to the inside of the matched elements</li>
+                </ul>
+                <ul>
+                    <li class="a"><code>after()</code>: Appends content to the outside of the matched elements</li>
+                    <li class="a"><code>before()</code>: Prepends content to the outside of the matched elements</li>
+                    <li class="a"><code>insertAfter()</code>: Takes the specified content and appends it outside of the specified elements</li>
+                    <li class="a"><code>insertBefore()</code>: Takes the specified content and prepends it outside of the specified elements</li>
+                </ul>
+                <div id="example">
+                    <p class="a">This is paragraph 1</p>
+                    <p id="para1">This is paragraph 2</p>
+                    <p class="b">This is paragraph 3</p>
+                    <p id="para4" lang="en-us">This is paragraph 4</p>
+                    <p id="para5" lang="en-gb">This is paragraph 5</p>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script>
+            $('document').ready(function(){
+                //$("#example p").append(" with some content appended");
+                // $("#example p").prepend("Hello! ");
+                // $("#example p:last").appendTo("#example p:first");
+                //$("#example p:last").prependTo("#example p:first");
+                //$("#example p").after("---");
+                //$("#example p").before("---*");
+                $("<p>New Para after</p>").insertAfter("#example p:first");
+                $("<p>New Para before</p>").insertBefore("#example p:last");
+            });
+        </script>
+  </body>
+</html>

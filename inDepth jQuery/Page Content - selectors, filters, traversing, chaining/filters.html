@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Filters</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  </head>
+  <body>
+    <nav class="navbar has-background-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <h1 class="is-size-2 has-text-primary-light">Filters</h1>
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      </nav>
+        <div class="container mt-5">
+            <h1>Using Basic jQuery Filters</h1>
+            <div id="content">
+        
+                <p>jQuery filters are used to refine the results that are returned from selectors.</p>
+                <p>A few examples:</p>
+                <ul id="list1">
+                    <li class="a"><code>$("p:first")</code>: of the returned &lt;p&gt; tags, select the first one</li>
+                    <li class="a"><code>$("p:even")</code>: select the even-number &lt;p&gt; tags</li>
+                    <li class="b"><code>$("a:gt(1)")</code>: of the &lt;a&gt; tags, select all those after the 0th and 1st</li>
+                    <li class="b"><code>$("p:not(p:eq(2))")</code>: select all the &lt;p&gt; tags except the one at index 2</li>
+                </ul>
+                <div id="example">
+                    <p class="a">This is paragraph 1</p>
+                    <p id="para1">This is paragraph 2</p>
+                    <p class="b">This is paragraph 3</p>
+                    <p id="para4" lang="en-us">This is paragraph 4</p>
+                    <p id="para5" lang="en-gb">This is paragraph 5</p>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    
+        <script>
+            //This filter 
+            //:first, :last, ex: .p:first
+            //:even, :odd 
+            //:gt() :lt() :eq() => Items greater than, less than, or equal to an index 
+            //a:animate => Items that are in the process of being animated 
+            //:focus => The element that currently has the focus 
+            //:not(expr) => Elements that don't match the given expression 
+            $('document').ready(function(){
+                //$("#example p:first").css("border", "3px solid red");
+                //$("#example p:last").css("border", "3px solid red");
+                //$("#example p:even").css("border", "3px solid red");
+                //$("#example .a:first").css("border", "3px solid red");
+                //$("#example .b:even").css("border", "3px solid red");
+                $("#example p:not(p:eq(2))").css("border", "3px solid red");
+            });
+        </script>
+  </body>
+</html>

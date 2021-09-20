@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Creating and modifying page content</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  </head>
+  <body>
+    <nav class="navbar has-background-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <h1 class="is-size-2 has-text-primary-light">Creating and modifying page content</h1>
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      </nav>
+        <div class="container mt-5">
+          <div id="example"></div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script>
+          $('document').ready(function(){
+            //create some new content 
+            var newP = $('<p>');
+            // newP.append('<em>Hello There</em>');
+            // $('#example').html(newP);
+            // $('#creation').prepend("Watch this! ");
+            // //change the existing content 
+            $('#example').html('<h2>This a new H2</h2>');
+            // -> this is inserts as a string $('#example').text('<h2>This is a new H2</h2>');
+          });
+        </script>
+  </body>
+</html>

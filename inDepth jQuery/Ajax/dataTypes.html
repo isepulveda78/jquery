@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>The Ajax Helper Functions</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+  
+  </head>
+  <body>
+    <nav class="navbar has-background-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+          <a class="navbar-item" href="/">
+            <h1 class="is-size-2 has-text-primary-light">The Ajax Helper Functions</h1>
+          </a>
+      
+          <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+      </nav>
+        <div class="container mt-5">
+            <h1>The Ajax Helper Functions</h1>
+            <div id="content">
+          
+              <p>The <code>$.ajax()</code> function is used to perform basic AJAX requests. It can be customized using a variety of parameters.</p>
+              <p>If successful, the returned data will appear here:</p>
+              <p id="ajaxContent"></p>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+        <script>
+                $("document").ready(function() {
+            //getXMLData();
+            getJSONData();
+        });
+
+        function getXMLData() {
+            $.get("testxmldata.xml", function(result) {
+                var title = result.getElementsByTagName("title")[0];
+                var name = result.getElementsByTagName("name")[0];
+                var val = title.firstChild.nodeValue + " by " + name.firstChild.nodeValue;
+                $("#ajaxContent").append(val);
+            });
+        }
+
+        function getJSONData() {
+            var flickrAPI = "http://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+            $.getJSON( flickrAPI, {
+                tags: "space needle",
+                tagmode: "any",
+                format: "json"
+                },
+                successFn);
+        }
+
+        function successFn(result) {
+            $.each(result.items, function(i, item) {
+                $("<img>").attr("src", item.media.m).appendTo("#ajaxContent");
+                if (i === 4) {
+                    return false;
+                }
+            });
+        }
+
+        function errorFn(xhr, status, strErr) {
+            alert(strErr);
+        }
+        </script>
+  </body>
+</html>
